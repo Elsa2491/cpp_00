@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = phonebook
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
 MAKEFLAGS += --no-print-directory
@@ -6,7 +6,7 @@ MAKEFLAGS += --no-print-directory
 GREEN := \e[32m
 RESET :=\e[0m
 
-SRCS = megaphone.cpp
+SRCS = PhoneBook.cpp Contact.cpp
 
 OBJS_PATH = objs/
 
@@ -21,6 +21,10 @@ $(OBJS_PATH)%.o: %.cpp
 $(NAME): $(OBJS)
 	@echo "\nCompilation megaphone: $(GREEN)success$(RESET)\n"
 	$(CC) $(OBJS) -o $(NAME)
+
+v: $(OBJS)
+	@echo "\nCompilation megaphone: $(GREEN)success$(RESET)\n"
+	$(CC) -v $(OBJS) -o $(NAME)
 
 clean:
 	/bin/rm -rf $(OBJS) $(OBJS_PATH)

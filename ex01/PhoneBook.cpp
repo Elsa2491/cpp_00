@@ -6,13 +6,12 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/02 18:24:11 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/03 21:57:11 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -24,6 +23,7 @@ PhoneBook::~PhoneBook(void)
 	return;
 }
 
+/*
 void PhoneBook::add()
 {
 	int	i;
@@ -36,12 +36,27 @@ void PhoneBook::add()
 		this->tab[i] = this->first_name;	
 	}
 }
+*/
 
-int	main()
+void	PhoneBook::ft_print()
 {
-	PhoneBook directory;
+//	this->input = new char[100];
+	std::cout << "Enter 'add' to add a new contact or 'search' to search for one." << std::endl;
+	std::cout << "If you want to leave, enter 'exit'" << std::endl;
+	std::getline(std::cin, this->input);
+//	std::cin.getline(this->input, 100);
+	std::cout << "You want to " << this->input << std::endl;
+//	delete[] this->input;
+	return ;
+}
 
-	directory.add();
+int	main(void)
+{
+	PhoneBook	phonebook;
+	Contact		contact;
+
+	phonebook.ft_print();
+//	directory.add();
 
 	return (0);
 }
