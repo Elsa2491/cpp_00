@@ -6,48 +6,42 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/03 21:57:11 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/04 17:41:20 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook(void)
-{
-	return;
-}
+PhoneBook::PhoneBook(void) {}
 
-PhoneBook::~PhoneBook(void)
-{
-	return;
-}
-
-/*
-void PhoneBook::add()
-{
-	int	i;
-
-	for (i = 0; i < 3; i++)
-	{
-		std::cout << "First_name: ";
-		std::getline(std::cin, this->first_name);
-		std::cout << "Your name is " << this->first_name << std::endl;
-		this->tab[i] = this->first_name;	
-	}
-}
-*/
+PhoneBook::~PhoneBook(void) {}
 
 void	PhoneBook::ft_print()
 {
-//	this->input = new char[100];
-	std::cout << "Enter 'add' to add a new contact or 'search' to search for one." << std::endl;
-	std::cout << "If you want to leave, enter 'exit'" << std::endl;
-	std::getline(std::cin, this->input);
-//	std::cin.getline(this->input, 100);
-	std::cout << "You want to " << this->input << std::endl;
-//	delete[] this->input;
-	return ;
+	int	add;
+	int	search;
+	int	exit;
+	std::cout << "Welcome to the 80s and their unbelievable technology!\n";
+	std::cout << "Enter 'ADD' to save a new contact or 'SEARCH' to display a specific one.\n";
+	std::cout << "If you want to leave, please enter 'EXIT'\n";
+	while (std::getline(std::cin, this->input))
+	{
+		add = this->input.compare("ADD");
+		search = this->input.compare("SEARCH");
+		exit = this->input.compare("EXIT");
+		if (!add)
+			std::cout << "You want to " << this->input << std::endl;
+		if (!search)
+			std::cout << "You want to " << this->input << std::endl;
+		if (!exit)
+		{
+			std::cout << "What a pity that you already want to leave us!" << std::endl;
+			return ;
+		}
+		else
+			std::cout << "Please, enter a correct command:\tADD, SEARCH or EXIT\n";
+	}
 }
 
 int	main(void)
@@ -56,7 +50,5 @@ int	main(void)
 	Contact		contact;
 
 	phonebook.ft_print();
-//	directory.add();
-
 	return (0);
 }

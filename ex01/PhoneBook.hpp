@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:46:16 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/03 21:57:00 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/04 16:49:45 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "Contact.hpp"
 
 class	PhoneBook
