@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/04 20:02:13 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:15:32 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-#include <cctype>
 PhoneBook::PhoneBook(void)
 {
 	this->_index = 0;
@@ -26,15 +25,13 @@ int	ft_is_alpha(std::string str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '\0')
+	if (!str.length() || (str[0] == '-' && str.length() == 1))
 		return (0);
 	while (str[i])
 	{
 		if (!isalpha(str[i]))
 		{
-			if (str[i] == '-')
-				i += 1;
-			else
+			if (str[i] != '-')
 				return (0);
 		}
 		i += 1;
@@ -47,7 +44,7 @@ int	ft_is_digit(std::string str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '\0')
+	if (!str.length())
 		return (0);
 	while (str[i])
 	{
@@ -58,7 +55,77 @@ int	ft_is_digit(std::string str)
 	return (1);
 }
 
-void	PhoneBook::ft_add(PhoneBook *phonebook)
+std::string	PhoneBook::ft_add_secret()
+{
+	std::string	secret;
+
+	std::cout << " Darkest secret:\t";
+	if (!std::getline(std::cin, secret))
+		return std::string();
+	return (secret);
+}
+
+std::string	PhoneBook::ft_add_phone(void)
+{
+	std::string	phone;
+
+	std::cout << " Phone:\t\t\t";
+	if (!std::getline(std::cin, phone))
+		return std::string();
+	while (!ft_is_digit(phone))
+	{
+		std::cout << " Please enter a correct phone number: ";
+		if (!std::getline(std::cin, phone))
+			return std::string();
+	}
+	return (phone);
+}
+
+std::string	PhoneBook::ft_add_nickname(void)
+{
+	std::string	nickname;
+
+	std::cout << " Nickname:\t\t";
+	if (!std::getline(std::cin, nickname))
+		return std::string();
+	return (nickname);
+}
+
+
+std::string	PhoneBook::ft_add_last_name(void)
+{
+	std::string	last_n;
+
+	std::cout << " Last name:\t\t";
+	if (!std::getline(std::cin, last_n))
+		return std::string();
+	while (!ft_is_alpha(last_n))
+	{
+		std::cout << " Please enter a correct last name: ";
+		if (!std::getline(std::cin, last_n))
+			return std::string();
+	}
+	return (last_n);
+}
+
+
+std::string	PhoneBook::ft_add_first_name(void)
+{
+	std::string	first_n;
+
+	std::cout << " First name:\t\t";
+	if (!std::getline(std::cin, first_n))
+		return std::string();
+	while (!ft_is_alpha(first_n))
+	{
+		std::cout << " Please enter a correct first name: ";
+		if (!std::getline(std::cin, first_n))
+			return std::string();
+	}
+	return (first_n);
+}
+
+void	PhoneBook::ft_add_contact(void)
 {
 	Contact	contact;
 	std::string	first_n;
@@ -67,50 +134,41 @@ void	PhoneBook::ft_add(PhoneBook *phonebook)
 	std::string	phone;
 	std::string	secret;
 
-	(void)phonebook;
-	std::cout << " First name:\t\t";
-	std::getline(std::cin, first_n);
-	while (!ft_is_alpha(first_n))
-	{
-		std::cout << " Please enter a correct first name: ";
-		if (!std::getline(std::cin, first_n))
-			return ;
-	}
-	std::cout << " Last name:\t\t";
-	std::getline(std::cin, last_n);
-	while (!ft_is_alpha(last_n))
-	{
-		std::cout << " Please enter a correct last name: ";
-		if (!std::getline(std::cin, last_n))
-			return ;
-	}
-	std::cout << " Nickname:\t\t";
-	std::getline(std::cin, nickname);
-	std::cout << " Phone:\t\t\t";
-	std::getline(std::cin, phone);
-	while (!ft_is_digit(phone))
-	{
-		std::cout << " Please enter a correct phone number: ";
-		if (!std::getline(std::cin, phone))
-			return ;
-	}
-	std::cout << " Darkest secret:\t";
-	std::getline(std::cin, secret);
+	first_n = ft_add_first_name();
+	last_n = ft_add_last_name();
+	nickname = ft_add_nickname();
+	phone = ft_add_phone();
+	secret = ft_add_secret();
 	contact.ft_set_contact(first_n, last_n, nickname, phone, secret);
 	this->_index += 1;
 	if (this->_index == 1)
 		std::cout << "\nYou have " << this->_index << " contact"  << std::endl;
 	else
 		std::cout << "\nYou have " << this->_index << " contacts"  << std::endl;
+	std::cout << "Enter 'ADD' to save a new one or 'SEARCH' to display a specific one.\n";
+	std::cout << "If you want to quit, please enter 'EXIT'\n";
 	return ;
+
 }
 
-void	PhoneBook::ft_print(PhoneBook *phonebook)
+
+Contact	PhoneBook::ft_get_contact(int i)
+{
+	return  _contact[i];
+}
+
+void	PhoneBook::ft_print_contacts(PhoneBook *phonebook)
+{
+	(void)phonebook;
+	std::cout << "ici " << this->_index << std::endl;
+}
+
+void	PhoneBook::ft_print_instructions(void)
 {
 	int	add;
 	int	search;
 	int	exit;
-	std::cout << "Welcome to the 80s and their unbelievable technology!\n";
+	std::cout << "Welcome to the 80s and their unbelievable technology!\n\n";
 	std::cout << "Enter 'ADD' to save a new contact or 'SEARCH' to display a specific one.\n";
 	std::cout << "If you want to quit, please enter 'EXIT'\n";
 	while (std::getline(std::cin, this->input) && this->_index < 8)
@@ -119,7 +177,7 @@ void	PhoneBook::ft_print(PhoneBook *phonebook)
 		search = this->input.compare("SEARCH");
 		exit = this->input.compare("EXIT");
 		if (!add)
-			ft_add(phonebook);
+			ft_add_contact();
 		else if (!search)
 		{
 			if (!this->_index)
@@ -128,7 +186,10 @@ void	PhoneBook::ft_print(PhoneBook *phonebook)
 				std::cout << "Please enter 'ADD' to save a new one before searching, or 'EXIT' if you want to quit.\n";
 			}
 			else
+			{
 				std::cout << "You want to " << this->input << std::endl;
+				ft_print_contacts(this);
+			}
 		}
 		else if (!exit)
 		{
@@ -136,7 +197,7 @@ void	PhoneBook::ft_print(PhoneBook *phonebook)
 			return ;
 		}
 		else
-			std::cout << "Please, enter a correct command:\tADD, SEARCH or EXIT\n";
+			std::cout << "Please, enter a correct command: ADD, SEARCH or EXIT\n";
 	}
 }
 
@@ -144,6 +205,7 @@ int	main(void)
 {
 	PhoneBook	phonebook;
 
-	phonebook.ft_print(&phonebook);
+	phonebook.ft_print_instructions();
+	//phonebook.ft_print_instructions(&phonebook);
 	return (0);
 }

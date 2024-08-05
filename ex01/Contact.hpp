@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:22:25 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/04 19:22:09 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/05 19:41:39 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 #include <string>
+#include <iostream>
 
 class Contact
 {
@@ -23,6 +24,8 @@ public:
 
 	void	ft_set_contact(std::string first, std::string last, std::string nickname,
 				std::string phone, std::string secret);
+	// void	ft_get_contact(std::string first, std::string last, std::string nickname,
+	//			std::string phone, std::string secret);
 
 private:
 	std::string	_first_name;
