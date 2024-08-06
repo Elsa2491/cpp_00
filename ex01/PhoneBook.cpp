@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/06 20:22:57 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/06 21:24:41 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ void	PhoneBook::ft_add_contact(void)
 
 Contact	PhoneBook::ft_retrieve_contact(int i)
 {
-	return  this->_contact[i];
+	return  (this->_contact[i]);
 }
 
 void	PhoneBook::ft_print_instructions(void)
 {
+	int	i;
 	while (std::getline(std::cin, this->input))
 	{
 		if (!this->input.compare("ADD"))
@@ -72,10 +73,14 @@ void	PhoneBook::ft_print_instructions(void)
 			if (!this->_index)
 			{
 				std::cout << "You don't have any contact yet.\n";
-				std::cout << "Please enter 'ADD' to save a new one before searching, or 'EXIT' if you want to quit.\n";
+				std::cout << "Please enter 'ADD' to save a new one before searching, ";
+				std::cout << "or 'EXIT' if you want to quit.\n";
 			}
 			else
-				ft_retrieve_contact(this->_index).ft_print_contact();
+			{
+				for (i = 1; i <= this->_index; i++)
+					ft_retrieve_contact(i).ft_print_contact();
+			}
 		}
 		else if (!this->input.compare("EXIT"))
 		{
