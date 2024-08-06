@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:22:25 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/06 19:32:58 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/06 20:09:31 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class Contact
 {
+	int	_i;
 	std::string	_first_name;
 	std::string	_last_name;
 	std::string	_nickname;
@@ -28,7 +29,7 @@ public:
 	Contact(void);
 	~Contact(void);
 
-	void	ft_set_contact(std::string first, std::string last, std::string nickname,
+	void	ft_set_contact(int i, std::string first, std::string last, std::string nickname,
 				std::string phone, std::string secret);
 	void	ft_print_contact(void);
 };
