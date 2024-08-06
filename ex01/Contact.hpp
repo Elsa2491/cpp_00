@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:22:25 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/06 14:42:16 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/06 19:32:58 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include <string>
 #include <iostream>
 
-class Contact {
-	// void	ft_get_contact(std::string first, std::string last, std::string nickname,
-	//			std::string phone, std::string secret);
-
+class Contact
+{
 	std::string	_first_name;
 	std::string	_last_name;
 	std::string	_nickname;
@@ -32,6 +30,7 @@ public:
 
 	void	ft_set_contact(std::string first, std::string last, std::string nickname,
 				std::string phone, std::string secret);
+	void	ft_print_contact(void);
 };
 
 #endif

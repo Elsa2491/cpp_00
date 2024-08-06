@@ -6,21 +6,19 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/06 15:23:55 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/06 19:46:40 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-/*
 PhoneBook::PhoneBook(void) 
 {
 	this->_index = 0;
 }
 
 PhoneBook::~PhoneBook(void) {}
-*/
 
 int	ft_is_alpha(std::string str)
 {
@@ -127,7 +125,6 @@ std::string	PhoneBook::ft_add_first_name(void)
 	return (first_n);
 }
 
-// passer les var en param
 void	PhoneBook::ft_add_contact(void)
 {
 	Contact	contact;
@@ -152,37 +149,26 @@ void	PhoneBook::ft_add_contact(void)
 	secret = ft_add_secret();
 	if (!secret.size())
 		return ;
-	contact.ft_set_contact(first_n, last_n, nickname, phone, secret);
+	this->_contact[this->_index].ft_set_contact(first_n, last_n, nickname, phone, secret);
 	this->_index += 1;
-	if (this->_index == 1)
-		std::cout << "\nYou have " << this->_index << " contact"  << std::endl;
-	else
-		std::cout << "\nYou have " << this->_index << " contacts"  << std::endl;
+	// if (this->_index == 1)
+	// 	std::cout << "\nYou have " << this->_index << " contact"  << std::endl;
+	// else
+	// 	std::cout << "\nYou have " << this->_index << " contacts"  << std::endl;
 	std::cout << "Enter 'ADD' to save a new one or 'SEARCH' to display a specific one.\n";
 	std::cout << "If you want to quit, please enter 'EXIT'\n";
 	return ;
 }
 
 
-/*
-Contact	PhoneBook::ft_get_contact(int i)
+Contact	PhoneBook::ft_retrieve_contact(int i)
 {
-	return  _contact[i];
-}
-
-*/
-void	PhoneBook::ft_print_contacts(PhoneBook *phonebook)
-{
-	(void)phonebook;
-	phonebook->ft_get_contact(this->_index);
-	std::cout << "ici " << this->_index << std::endl;
-	return ;
+	return  this->_contact[i];
 }
 
 void	PhoneBook::ft_print_instructions(void)
 {
-	// if (std::getline(std::cin, this->input) && this->_index < 8)
-	while (std::getline(std::cin, this->input) && this->_index < 8)
+	while (std::getline(std::cin, this->input)) // && this->_index < 8)
 	{
 		if (!this->input.compare("ADD"))
 			ft_add_contact();
@@ -196,7 +182,7 @@ void	PhoneBook::ft_print_instructions(void)
 			else
 			{
 				std::cout << "You want to " << this->input << std::endl;
-//				ft_print_contacts(this);
+				ft_retrieve_contact(this->_index).ft_print_contact();
 			}
 		}
 		else if (!this->input.compare("EXIT"))
@@ -207,16 +193,11 @@ void	PhoneBook::ft_print_instructions(void)
 		else
 			std::cout << "Please, enter a correct command: ADD, SEARCH or EXIT\n";
 	}
-/*
-	if (!std::getline(std::cin, this->input))
-		return ;
-	ft_print_instructions();
-*/
 }
 
 int	main(int argc, char **argv)
 {
-//	PhoneBook phonebook;
+	PhoneBook phonebook;
 
 	(void)argv;
 	if (argc != 1)
