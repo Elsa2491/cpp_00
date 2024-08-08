@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 20:21:05 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 21:02:53 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	PhoneBook::ft_add_contact(void)
 
 Contact	PhoneBook::ft_retrieve_contact(int i)
 {
-
 	return  (this->_contact[i]);
 }
 
@@ -54,7 +53,7 @@ std::string ft_truncate(std::string str)
 	return (str);
 }
 
-void	PhoneBook::ft_print_contact(void)
+void	ft_print_top_line(void)
 {
 	std::cout << CORNER_TL;
 	for (int col = 0; col < 4; ++col)
@@ -64,7 +63,43 @@ void	PhoneBook::ft_print_contact(void)
 		if (col < 3)
 			std::cout << T_TOP;
 	}
+}
+
+void	ft_print_header(void)
+{
 	std::cout << CORNER_TR << std::endl;
+	std::cout << VERTICAL;
+	std::cout << std::setw(10) << "Index" << VERTICAL;
+	std::cout << std::setw(10) << "First name" << VERTICAL;
+	std::cout << std::setw(10) << "Last name" << VERTICAL;
+	std::cout << std::setw(10) << "Nickname" << VERTICAL << std::endl;
+	std::cout << T_LEFT;
+	for (int j = 0; j < 4; ++j) {
+		for (int k = 0; k < 10; k++)
+			std::cout << HORIZONTAL;
+		if (j < 4 - 1)
+			std::cout << CROSS;
+	}
+	std::cout << T_RIGHT << std::endl;
+}
+
+void	ft_print_bottom_line(void)
+{
+	std::cout << CORNER_BL;
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 10; j++)
+			std::cout << HORIZONTAL;
+		if (i < 3)
+			std::cout << T_BOTTOM;
+	}
+	std::cout << CORNER_BR << std::endl;
+}
+
+void	PhoneBook::ft_print_contact(void)
+{
+	ft_print_top_line();
+	ft_print_header();
 	for (int height = 0; height < this->_contact_nb; ++height) {
 		std::cout << VERTICAL;
 		std::cout << std::setw(10) << height + 1 << VERTICAL;
@@ -83,18 +118,9 @@ void	PhoneBook::ft_print_contact(void)
 			std::cout << T_RIGHT << std::endl;
 		}
 	}
-	std::cout << CORNER_BL;
-	for (int i = 0; i < 4; ++i)
-	{
-		for (int j = 0; j < 10; j++)
-			std::cout << HORIZONTAL;
-		if (i < 3)
-			std::cout << T_BOTTOM;
-	}
-	std::cout << CORNER_BR << std::endl;
-	std::cout << "Enter 'ADD' to save a new one or the index to display a specific one.\n";
-	std::cout << "If you want to quit, please enter 'EXIT'\n";
-	// cherche l'index
+	ft_print_bottom_line();
+	std::cout << "Select a contact to display his informations\n";
+	//while (std::getline(std::cin, this->_input))
 }
 
 void	PhoneBook::ft_print_instructions(void)
