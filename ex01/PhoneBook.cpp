@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 21:02:53 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 21:31:00 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@ void	PhoneBook::ft_add_contact(void)
 	std::string	secret;
 
 	first_n = ft_add_first_name();
-	if (!first_n.size())
+	if (!first_n.length())
 		return ;
 	last_n = ft_add_last_name();
-	if (!last_n.size())
+	if (!last_n.length())
 		return ;
 	nickname = ft_add_nickname();
+	if (!nickname.length())
+		return ;
 	phone = ft_add_phone();
-	if (!phone.size())
+	if (!phone.length())
 		return ;
 	secret = ft_add_secret();
+	if (!secret.length())
+		return ;
 	this->_contact[this->_contact_nb].ft_set_contact(this->_contact_nb, first_n, last_n, nickname, phone, secret);
 	this->_contact_nb += 1;
 	std::cout << "\nEnter 'ADD' to save a new one or 'SEARCH' to display a specific one.\n";

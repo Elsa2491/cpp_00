@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 18:32:54 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 21:27:57 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ std::string	PhoneBook::ft_add_nickname(void)
 	std::cout << " Nickname:\t\t";
 	if (!std::getline(std::cin, nickname))
 		return std::string();
+	while (!nickname.length())
+	{
+		std::cout << " Nickname can't be empty: ";
+		if (!std::getline(std::cin, nickname))
+			return std::string();
+	}
 	return (nickname);
 }
 
@@ -77,5 +83,11 @@ std::string	PhoneBook::ft_add_secret()
 	std::cout << " Darkest secret:\t";
 	if (!std::getline(std::cin, secret))
 		return std::string();
+	while (!secret.length())
+	{
+		std::cout << " Secret can't be empty: ";
+		if (!std::getline(std::cin, secret))
+			return std::string();
+	}
 	return (secret);
 }
