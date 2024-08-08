@@ -6,11 +6,12 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:13:34 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/07 21:39:47 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 18:15:34 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <iomanip>
 
 Contact::Contact(void) {}
 
@@ -28,7 +29,28 @@ void	Contact::ft_set_contact(int i, std::string first, std::string last, std::st
 	return ;
 }
 
-void	Contact::ft_print_contact(void)
+std::string	Contact::get_first_name(void) const
+{
+	return (this->_first_name);
+}
+
+std::string	Contact::get_last_name(void) const
+{
+	return (this->_last_name);
+}
+
+std::string	Contact::get_nickname(void) const
+{
+	return (this->_nickname);
+}
+
+int	Contact::get_index(void) const
+{
+	return (this->_i);
+}
+/*
+//void	Contact::ft_print_contact(int rows)
+void	PhoneBook::ft_print_contact(void)
 {
 	const char	*horizontal = "\u2500";
 	const char	*vertical = "\u2502";

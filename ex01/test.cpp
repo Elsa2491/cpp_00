@@ -69,10 +69,11 @@ void drawTable(int rows, int cols) {
     std::cout << corner_br << std::endl;
 }
 
+/*
 int main() {
     int rows = 3;
     int cols = 4;
     drawTable(rows, cols);
     return 0;
 }
-
+*/
