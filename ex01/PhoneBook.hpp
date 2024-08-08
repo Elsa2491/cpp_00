@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:46:16 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 17:37:44 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 18:30:22 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #include "Contact.hpp"
 
 #define NB_CONTACT 8
+
+int	ft_is_alpha(std::string str);
+int	ft_is_digit(std::string str);
 
 class	PhoneBook
 {
