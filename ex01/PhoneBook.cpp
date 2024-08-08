@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 19:24:55 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/08 20:21:05 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,26 @@ void	PhoneBook::ft_add_contact(void)
 	if (!phone.size())
 		return ;
 	secret = ft_add_secret();
-	this->_contact[this->_index].ft_set_contact(this->_index, first_n, last_n, nickname, phone, secret);
-	this->_index += 1;
+	this->_contact[this->_contact_nb].ft_set_contact(this->_contact_nb, first_n, last_n, nickname, phone, secret);
+	this->_contact_nb += 1;
 	std::cout << "\nEnter 'ADD' to save a new one or 'SEARCH' to display a specific one.\n";
 	std::cout << "If you want to quit, please enter 'EXIT'\n";
 	return ;
 }
 
-
 Contact	PhoneBook::ft_retrieve_contact(int i)
 {
 
 	return  (this->_contact[i]);
+}
+
+std::string ft_truncate(std::string str)
+{
+	if (!str.length())
+		return std::string();
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
 }
 
 void	PhoneBook::ft_print_contact(void)
@@ -57,21 +65,20 @@ void	PhoneBook::ft_print_contact(void)
 			std::cout << T_TOP;
 	}
 	std::cout << CORNER_TR << std::endl;
-	for (int height = 0; height < this->_index; ++height) {
+	for (int height = 0; height < this->_contact_nb; ++height) {
 		std::cout << VERTICAL;
 		std::cout << std::setw(10) << height + 1 << VERTICAL;
-		std::cout << std::setw(10) << this->_contact[height].get_first_name() << VERTICAL;
-		std::cout << std::setw(10) << this->_contact[height].get_last_name() << VERTICAL;
-		std::cout << std::setw(10) << this->_contact[height].get_nickname() << VERTICAL;
+		std::cout << std::setw(10) << ft_truncate(this->_contact[height].get_first_name()) << VERTICAL;
+		std::cout << std::setw(10) << ft_truncate(this->_contact[height].get_last_name()) << VERTICAL;
+		std::cout << std::setw(10) << ft_truncate(this->_contact[height].get_nickname()) << VERTICAL;
 		std::cout << std::endl;
-		if (height < this->_index - 1) {
+		if (height < this->_contact_nb - 1) {
 			std::cout << T_LEFT;
 			for (int j = 0; j < 4; ++j) {
 				for (int k = 0; k < 10; k++)
 					std::cout << HORIZONTAL;
-				if (j < 4 - 1) {
+				if (j < 4 - 1)
 					std::cout << CROSS;
-				}
 			}
 			std::cout << T_RIGHT << std::endl;
 		}
@@ -98,7 +105,7 @@ void	PhoneBook::ft_print_instructions(void)
 			ft_add_contact();
 		else if (!this->_input.compare("SEARCH"))
 		{
-			if (!this->_index)
+			if (!this->_contact_nb)
 			{
 				std::cout << "You don't have any contact yet.\n";
 				std::cout << "Please enter 'ADD' to save a new one before searching, ";

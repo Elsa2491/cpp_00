@@ -40,7 +40,7 @@ class	PhoneBook
 {
 	Contact 	_contact[NB_CONTACT];
 	int		_contact_nb;
-//	int		_index;
+//	int		_contact_nb;
 	std::string	_input;
 	std::string	ft_add_first_name(void);
 	std::string	ft_add_last_name(void);

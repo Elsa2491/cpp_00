@@ -15,7 +15,7 @@
 
 PhoneBook::PhoneBook(void) 
 {
-	this->_index = 0;
+	this->_contact_nb = 0;
 }
 
 PhoneBook::~PhoneBook(void) {}
