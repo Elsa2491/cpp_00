@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:13:34 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/09 13:44:35 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/09 18:11:21 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ Contact::Contact(void) {}
 
 Contact::~Contact(void) {}
 
-void	Contact::ft_set_contact(int i, std::string first, std::string last, std::string nickname,
+//void	Contact::ft_set_contact(int i, std::string first, std::string last, std::string nickname,
+void	Contact::ft_set_contact(std::string first, std::string last, std::string nickname,
 		std::string phone, std::string secret)
 {
-	this->_i = i;
+//	this->_i = i;
 	this->_first_name = first;
 	this->_last_name = last;
 	this->_nickname = nickname;
@@ -28,6 +29,13 @@ void	Contact::ft_set_contact(int i, std::string first, std::string last, std::st
 	this->_secret = secret;
 	return ;
 }
+
+/*
+int	Contact::ft_get_id(void) const
+{
+	return (this->_i);
+}
+*/
 
 std::string	Contact::ft_get_first_name(void) const
 {

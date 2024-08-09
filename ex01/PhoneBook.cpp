@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/09 15:54:58 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/09 21:29:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ void	PhoneBook::ft_add_contact(void)
 	secret = ft_add_secret();
 	if (!secret.length())
 		return ;
-	this->_contact[this->_contact_nb].ft_set_contact(this->_contact_nb, first_n, last_n, nickname, phone, secret);
-	this->_contact_nb += 1;
+	this->_contact[this->_index].ft_set_contact(first_n, last_n, nickname, phone, secret);
+	if (this->_contact_nb < NB_CONTACT - 1)
+	{
+		this->_contact_nb += 1;
+		this->_index += 1;
+	}
+	else
+	{
+		this->_contact_nb += 1;
+		this->_index = (this->_index + 1) % NB_CONTACT;	
+	}
 	std::cout << "\nEnter 'ADD' to save a new one or 'SEARCH' to display a specific one.\n";
 	std::cout << "If you want to quit, please enter 'EXIT'" << std::endl;
 	return ;
-}
-
-Contact	PhoneBook::ft_retrieve_contact(int i)
-{
-	return  (this->_contact[i]);
 }
 
 void	PhoneBook::ft_print_instructions(void)

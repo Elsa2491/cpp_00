@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/09 15:56:24 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/09 21:09:51 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ void	PhoneBook::ft_select_contact(void)
 			std::cout << "Please, enter a correct input (digit > 0 only)" << std::endl;
 		if (ft_is_digit(this->_input))
 		{
-			if (atoi(this->_input.c_str()) > this->_contact_nb || atoi(this->_input.c_str()) == 0)
-				std::cout << "Sorry, you can only choose between 1 and " << this->_contact_nb << std::endl;
+			if (strtol(this->_input.c_str(), NULL, 10) > this->_contact_nb
+				|| strtol(this->_input.c_str(), NULL, 10) > NB_CONTACT
+				|| atoi(this->_input.c_str()) == 0)
+				std::cout << "Sorry, this contact does not exist." << std::endl;
 			else
 			{
 				i = atoi(this->_input.c_str()) - 1; 
@@ -96,14 +98,16 @@ void	PhoneBook::ft_print_contact(void)
 {
 	ft_print_top_line();
 	ft_print_header();
-	for (int height = 0; height < this->_contact_nb; ++height) {
+	
+	for (int height = 0; height < (this->_contact_nb < NB_CONTACT ? this->_contact_nb : NB_CONTACT); ++height) {
 		std::cout << VERTICAL;
 		std::cout << std::setw(10) << height + 1 << VERTICAL;
 		std::cout << std::setw(10) << ft_truncate(this->_contact[height].ft_get_first_name()) << VERTICAL;
 		std::cout << std::setw(10) << ft_truncate(this->_contact[height].ft_get_last_name()) << VERTICAL;
 		std::cout << std::setw(10) << ft_truncate(this->_contact[height].ft_get_nickname()) << VERTICAL;
 		std::cout << std::endl;
-		if (height < this->_contact_nb - 1) {
+		if (height < (this->_contact_nb > NB_CONTACT ? NB_CONTACT - 1 : this->_contact_nb - 1)) 
+		{
 			std::cout << T_LEFT;
 			for (int j = 0; j < 4; ++j) {
 				for (int k = 0; k < 10; k++)
