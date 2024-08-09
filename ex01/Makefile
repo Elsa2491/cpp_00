@@ -6,7 +6,8 @@ MAKEFLAGS += --no-print-directory
 GREEN := \e[32m
 RESET :=\e[0m
 
-SRCS = PhoneBook.cpp PhoneBook_set_infos.cpp PhoneBook_check_input.cpp Contact.cpp main.cpp
+SRCS = PhoneBook.cpp PhoneBook_set_infos.cpp PhoneBook_check_input.cpp PhoneBook_draw_tab.cpp \
+	Contact.cpp main.cpp
 
 OBJS_PATH = objs/
 

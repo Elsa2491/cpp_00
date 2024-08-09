@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:50:33 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/08 21:27:57 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/09 16:12:50 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ std::string	PhoneBook::ft_add_first_name(void)
 		return std::string();
 	while (!ft_is_alpha(first_n))
 	{
-		std::cout << " Please enter a correct first name: ";
+		std::cout << " Please enter a correct first name (can't be empty): ";
 		if (!std::getline(std::cin, first_n))
 			return std::string();
 	}
@@ -37,7 +37,7 @@ std::string	PhoneBook::ft_add_last_name(void)
 		return std::string();
 	while (!ft_is_alpha(last_n))
 	{
-		std::cout << " Please enter a correct last name: ";
+		std::cout << " Please enter a correct last name (can't be empty): ";
 		if (!std::getline(std::cin, last_n))
 			return std::string();
 	}
@@ -51,9 +51,9 @@ std::string	PhoneBook::ft_add_nickname(void)
 	std::cout << " Nickname:\t\t";
 	if (!std::getline(std::cin, nickname))
 		return std::string();
-	while (!nickname.length())
+	while (!ft_is_alpha(nickname))
 	{
-		std::cout << " Nickname can't be empty: ";
+		std::cout << " Please enter a correct nickname (can't be empty): ";
 		if (!std::getline(std::cin, nickname))
 			return std::string();
 	}
@@ -69,7 +69,7 @@ std::string	PhoneBook::ft_add_phone(void)
 		return std::string();
 	while (!ft_is_digit(phone))
 	{
-		std::cout << " Please enter a correct phone number: ";
+		std::cout << " Please enter a correct phone number (can't be empty): ";
 		if (!std::getline(std::cin, phone))
 			return std::string();
 	}
@@ -83,9 +83,9 @@ std::string	PhoneBook::ft_add_secret()
 	std::cout << " Darkest secret:\t";
 	if (!std::getline(std::cin, secret))
 		return std::string();
-	while (!secret.length())
+	while (!ft_is_alpha(secret))
 	{
-		std::cout << " Secret can't be empty: ";
+		std::cout << " Please enter a correct secret (can't be empty): ";
 		if (!std::getline(std::cin, secret))
 			return std::string();
 	}
