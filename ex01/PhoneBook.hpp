@@ -6,7 +6,7 @@
 /*   By: eltouma <eltouma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:46:16 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/09 21:21:43 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/10 18:56:09 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 int	ft_is_alpha(std::string str);
 int	ft_is_digit(std::string str);
 int	ft_is_print(std::string str);
+int	ft_check_phone(std::string str);
 std::string ft_truncate(std::string str);
 
 class	PhoneBook
