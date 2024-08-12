@@ -6,20 +6,21 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:07:38 by eltouma           #+#    #+#             */
-/*   Updated: 2024/08/09 21:07:21 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/08/12 18:35:31 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <stdio.h>
+#include <string>
 
-void	ft_toupper(char *str)
+void	ft_toupper(std::string str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-		putchar(toupper(str[i++]));
+	while (str.c_str()[i])
+		putchar(toupper(str.c_str()[i++]));
 }
 
 int	main(int argc, char **argv)
